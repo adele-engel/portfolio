@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,15 +8,20 @@
 </head>
 <body>
   <header>
-    <h1 data-i18n="title">👾 Mon Portfolio 👾</h1>
-    <div id="lang-switch">
-  <button id="fr" aria-label="Français">
-    <img src="https://flagcdn.com/w40/fr.png" alt="Français" />
-  </button>
-  <button id="en" aria-label="English">
-    <img src="https://flagcdn.com/w40/gb.png" alt="English" />
-  </button>
-</div>
+    <h1 data-i18n="title">👾 Mon Portfolio Rétro 👾</h1>
+
+    <div id="controls">
+      <div id="lang-switch">
+        <button data-lang="fr" aria-label="Français">
+          <img src="https://flagcdn.com/w40/fr.png" alt="FR" />
+        </button>
+        <button data-lang="en" aria-label="English">
+          <img src="https://flagcdn.com/w40/gb.png" alt="EN" />
+        </button>
+      </div>
+
+      <button id="theme-toggle" title="Changer le thème">🌓</button>
+    </div>
 
     <nav>
       <a href="#jeux" data-i18n="nav.games">🎮 Jeux</a>
@@ -29,28 +34,28 @@
 
   <main>
     <section id="jeux">
-      <h2 data-i18n="sections.games.title">🎮 Jeux vidéo</h2>
-      <p data-i18n="sections.games.desc">Voici les jeux que j’ai développés avec Unity et Godot.</p>
+      <h2 data-i18n="sections.games.title"></h2>
+      <p data-i18n="sections.games.desc"></p>
     </section>
 
     <section id="videos">
-      <h2 data-i18n="sections.videos.title">🎥 Serious Games</h2>
-      <p data-i18n="sections.videos.desc">Vidéos explicatives ou immersives de mes serious games.</p>
+      <h2 data-i18n="sections.videos.title"></h2>
+      <p data-i18n="sections.videos.desc"></p>
     </section>
 
     <section id="vr">
-      <h2 data-i18n="sections.vr.title">🕶 Réalité virtuelle</h2>
-      <p data-i18n="sections.vr.desc">Expériences immersives en VR que j’ai conçues avec Unreal Engine.</p>
+      <h2 data-i18n="sections.vr.title"></h2>
+      <p data-i18n="sections.vr.desc"></p>
     </section>
 
     <section id="3d">
-      <h2 data-i18n="sections.d3.title">📦 Modélisations 3D</h2>
-      <p data-i18n="sections.d3.desc">Créations faites dans Blender.</p>
+      <h2 data-i18n="sections.d3.title"></h2>
+      <p data-i18n="sections.d3.desc"></p>
     </section>
 
     <section id="web">
-      <h2 data-i18n="sections.web.title">🌐 Sites web</h2>
-      <p data-i18n="sections.web.desc">Sites interactifs réalisés pour divers projets.</p>
+      <h2 data-i18n="sections.web.title"></h2>
+      <p data-i18n="sections.web.desc"></p>
     </section>
   </main>
 
