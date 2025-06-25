@@ -40,6 +40,24 @@ h1 {
   margin-bottom: 10px;
 }
 
+#theme-toggle {
+  background: none;
+  border: 2px solid var(--accent);
+  border-radius: 5px;
+  padding: 6px 12px;
+  color: var(--text);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#theme-toggle:hover {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+
 #lang-switch button,
 #theme-toggle {
   background: none;
