@@ -1,17 +1,20 @@
-// Son rétro au clic sur les boutons
-const sound = document.getElementById("click-sound");
+function setLang(lang) {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const keys = key.split(".");
+    let value = translations[lang];
 
-document.querySelectorAll("button").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    sound.currentTime = 0;
-    sound.play();
-  });
-});
+    for (let k of keys) {
+      if (value[k]) value = value[k];
+      else return;
+    }
 
-// Animation clignotante sur liens nav
-const navLinks = document.querySelectorAll("nav a");
-setInterval(() => {
-  navLinks.forEach((link) => {
-    link.style.textShadow = Math.random() > 0.5 ? "0 0 8px #ff0077" : "none";
+    el.textContent = value;
   });
-}, 800);
+}
+
+document.getElementById("fr").addEventListener("click", () => setLang("fr"));
+document.getElementById("en").addEventListener("click", () => setLang("en"));
+
+// Langue par défaut
+setLang("fr");
