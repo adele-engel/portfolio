@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(180deg, #0f0f0f 0%, #1c1c1c 100%);
+  font-family: 'Press Start 2P', cursive;
+  color: #00ffea;
+  padding: 20px;
+  min-height: 100vh;
+  background-image: url('https://www.transparenttextures.com/patterns/pixel-weave.png');
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #ff0055;
+  text-shadow: 2px 2px #000;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #00ffea;
+  text-decoration: none;
+  transition: all 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  color: #ff0055;
+  border-bottom: 2px solid #ff0055;
+}
+
+section {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border: 2px solid #00ffea;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00ffea33;
+}
+
+button {
+  background-color: #ff0055;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff0055aa;
+  margin-top: 10px;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
