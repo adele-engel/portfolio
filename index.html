@@ -3,55 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mon Portfolio - Thème Jeux Vidéo</title>
+  <title>Mon Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Mon Portfolio</h1>
+    <h1 data-i18n="title">👾 Mon Portfolio 👾</h1>
+    <div id="lang-switch">
+      <img src="https://flagcdn.com/w40/fr.png" alt="Français" id="fr" />
+      <img src="https://flagcdn.com/w40/gb.png" alt="English" id="en" />
+    </div>
     <nav>
-      <a href="#jeux">🎮 Jeux</a>
-      <a href="#videos">🎥 Serious Games</a>
-      <a href="#vr">🕶 VR</a>
-      <a href="#3d">📦 Modélisations</a>
-      <a href="#web">🌐 Sites Web</a>
+      <a href="#jeux" data-i18n="nav.games">🎮 Jeux</a>
+      <a href="#videos" data-i18n="nav.videos">🎥 Serious Games</a>
+      <a href="#vr" data-i18n="nav.vr">🕶 VR</a>
+      <a href="#3d" data-i18n="nav.3d">📦 Modélisations</a>
+      <a href="#web" data-i18n="nav.web">🌐 Sites Web</a>
     </nav>
   </header>
 
   <main>
     <section id="jeux">
-      <h2>🎮 Jeux vidéo</h2>
-      <p>Voici les jeux que j’ai développés avec Unity et Godot.</p>
-      <button>Voir plus</button>
+      <h2 data-i18n="sections.games.title">🎮 Jeux vidéo</h2>
+      <p data-i18n="sections.games.desc">Voici les jeux que j’ai développés avec Unity et Godot.</p>
     </section>
 
     <section id="videos">
-      <h2>🎥 Serious Games</h2>
-      <iframe width="100%" height="300" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+      <h2 data-i18n="sections.videos.title">🎥 Serious Games</h2>
+      <p data-i18n="sections.videos.desc">Vidéos explicatives ou immersives de mes serious games.</p>
     </section>
 
     <section id="vr">
-      <h2>🕶 Réalité virtuelle</h2>
-      <p>Expériences immersives en VR que j’ai conçues avec Unreal Engine.</p>
+      <h2 data-i18n="sections.vr.title">🕶 Réalité virtuelle</h2>
+      <p data-i18n="sections.vr.desc">Expériences immersives en VR que j’ai conçues avec Unreal Engine.</p>
     </section>
 
     <section id="3d">
-      <h2>📦 Modélisations 3D</h2>
-      <p>Créations faites dans Blender :</p>
-      <img src="assets/bg-image.png" alt="3D Model" width="100%" />
+      <h2 data-i18n="sections.d3.title">📦 Modélisations 3D</h2>
+      <p data-i18n="sections.d3.desc">Créations faites dans Blender.</p>
     </section>
 
     <section id="web">
-      <h2>🌐 Sites web</h2>
-      <p>Sites web interactifs que j’ai créés pour divers projets.</p>
+      <h2 data-i18n="sections.web.title">🌐 Sites web</h2>
+      <p data-i18n="sections.web.desc">Sites interactifs réalisés pour divers projets.</p>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 - Ton Nom | Portfolio gamer</p>
-  </footer>
-
-  <audio id="click-sound" src="assets/pixel-sound.mp3" preload="auto"></audio>
+  <script src="translations.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
