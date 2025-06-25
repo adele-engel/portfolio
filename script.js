@@ -1,19 +1,17 @@
-// Animation simple au clic sur les boutons
+// Son rétro au clic sur les boutons
+const sound = document.getElementById("click-sound");
+
 document.querySelectorAll("button").forEach((btn) => {
   btn.addEventListener("click", () => {
-    btn.style.transform = "scale(0.95)";
-    setTimeout(() => {
-      btn.style.transform = "scale(1)";
-    }, 150);
+    sound.currentTime = 0;
+    sound.play();
   });
 });
 
-// Effet néon clignotant sur les liens
-const links = document.querySelectorAll("nav a");
-
+// Animation clignotante sur liens nav
+const navLinks = document.querySelectorAll("nav a");
 setInterval(() => {
-  links.forEach((link) => {
-    const glow = Math.random() > 0.5;
-    link.style.textShadow = glow ? "0 0 5px #00ffea" : "none";
+  navLinks.forEach((link) => {
+    link.style.textShadow = Math.random() > 0.5 ? "0 0 8px #ff0077" : "none";
   });
-}, 700);
+}, 800);
