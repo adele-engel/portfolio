@@ -1,29 +1,50 @@
-function setLang(lang) {
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    const keys = key.split(".");
-    let value = translations[lang];
+// DOM elements
+const languageSelector = document.getElementById('languageSelector');
+let currentLanguage = 'en';
 
-    for (let k of keys) {
-      if (value[k]) value = value[k];
-      else return;
-    }
-
-    el.textContent = value;
-  });
+// Initialize the application
+function init() {
+    // Set up language switching
+    languageSelector.addEventListener('change', function() {
+        currentLanguage = this.value;
+        updateLanguage();
+    });
 }
 
-// Langue par défaut
-let currentLang = "fr";
-setLang(currentLang);
+// Set up event listeners
+function setupEventListeners() {
+    // Home button
+    homeButton.addEventListener('click', function() {
+        showPage(videoInstructionsPage);
+        hideTopMenu();
+    });
+}
 
-// Gestion des clics sur les drapeaux
-document.querySelectorAll('[data-lang]').forEach(btn => {
-  btn.addEventListener("click", () => {
-    currentLang = btn.getAttribute("data-lang");
-    setLang(currentLang);
-  });
-});
+// Update language
+function updateLanguage() {
+    // Update all text elements with data-lang-key attribute
+    document.querySelectorAll('[data-lang-key]').forEach(element => {
+        const key = element.getAttribute('data-lang-key');
+        if (languageData[currentLanguage][key]) {
+            element.textContent = languageData[currentLanguage][key];
+        }
+    });
+    
+    // Update HTML lang attribute
+    document.documentElement.lang = currentLanguage;
+    
+    // Refresh posts to update status messages
+    generatePosts();
+}
+
+// Get text in current language
+function getLanguageText(key) {
+    return languageData[currentLanguage][key] || key;
+}
+
+
+
+
 
 const themeToggleBtn = document.getElementById("theme-toggle");
 
@@ -52,3 +73,6 @@ document.getElementById("theme-toggle").addEventListener("click", () => {
   const current = html.getAttribute("data-theme");
   html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
 });
+
+// Initialize the app when document is loaded
+init();
