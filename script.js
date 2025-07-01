@@ -4,11 +4,15 @@ let currentLanguage = 'en';
 
 // Initialize the application
 function init() {
-    // Set up language switching
-    languageSelector.addEventListener('change', function() {
-        currentLanguage = this.value;
-        updateLanguage();
+  // Gestion du changement de langue par clic sur les drapeaux
+  document.querySelectorAll('#languageSelector img').forEach(flag => {
+    flag.addEventListener('click', () => {
+      const lang = flag.getAttribute('data-lang');
+      currentLanguage = lang;
+      updateLanguage();
     });
+  });
+  updateLanguage(); // Appliquer la langue au démarrage
 }
 
 // Set up event listeners
@@ -22,19 +26,20 @@ function setupEventListeners() {
 
 // Update language
 function updateLanguage() {
-    // Update all text elements with data-lang-key attribute
-    document.querySelectorAll('[data-lang-key]').forEach(element => {
-        const key = element.getAttribute('data-lang-key');
-        if (languageData[currentLanguage][key]) {
-            element.textContent = languageData[currentLanguage][key];
-        }
-    });
-    
-    // Update HTML lang attribute
-    document.documentElement.lang = currentLanguage;
-    
-    // Refresh posts to update status messages
-    generatePosts();
+  // Mise à jour des textes selon la langue
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const translation = languageData[currentLanguage]?.[key];
+    if (translation) {
+      el.textContent = translation;
+    }
+  });
+
+  // Mise à jour texte du bouton thème si nécessaire
+  updateThemeButtonText(currentTheme);
+
+  // Mise à jour de l'attribut HTML lang
+  document.documentElement.lang = currentLanguage;
 }
 
 // Get text in current language
