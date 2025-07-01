@@ -5,10 +5,10 @@ let currentLanguage = 'en';
 // Initialize the application
 function init() {
   // Gestion du changement de langue par clic sur les drapeaux
-  document.querySelectorAll('#languageSelector img').forEach(flag => {
+  document.querySelectorAll('#languageSelector img').forEach(button => {
     flag.addEventListener('click', () => {
-      const lang = flag.getAttribute('data-lang');
-      currentLanguage = lang;
+      const selectedLang = button.getAttribute('data-lang');
+      currentLanguage = selectedLang;
       updateLanguage();
     });
   });
@@ -26,19 +26,17 @@ function setupEventListeners() {
 
 // Update language
 function updateLanguage() {
-  // Mise à jour des textes selon la langue
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    const translation = languageData[currentLanguage]?.[key];
-    if (translation) {
-      el.textContent = translation;
+    const keys = key.split('.');
+    let value = languageData[currentLanguage];
+    for (let k of keys) {
+      if (value[k]) value = value[k];
+      else return;
     }
+    el.textContent = value;
   });
 
-  // Mise à jour texte du bouton thème si nécessaire
-  updateThemeButtonText(currentTheme);
-
-  // Mise à jour de l'attribut HTML lang
   document.documentElement.lang = currentLanguage;
 }
 
