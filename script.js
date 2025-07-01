@@ -26,8 +26,8 @@ function setupEventListeners() {
 
 // Update language
 function updateLanguage() {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
+  document.querySelectorAll('[data-lang-key]').forEach(el => {
+    const key = el.getAttribute('data-lang-key');
     const keys = key.split('.');
     let value = languageData[currentLanguage];
     for (let k of keys) {
