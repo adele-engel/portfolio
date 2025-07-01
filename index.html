@@ -1,50 +1,60 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="light">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mon Portfolio</title>
+  <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
-    <section id="jeux">
-      <h2 data-i18n="sections.games.title"></h2>
-      <p data-i18n="sections.games.desc"></p>
+    <section id="unity">
+      <h2 data-i18n="sections.unity.title"></h2>
+      <p data-i18n="sections.unity.desc"></p>
     </section>
-    <section id="videos">
-      <h2 data-i18n="sections.videos.title"></h2>
-      <p data-i18n="sections.videos.desc"></p>
+    <section id="unreal">
+      <h2 data-i18n="sections.unreal.title"></h2>
+      <p data-i18n="sections.unreal.desc"></p>
     </section>
-    <section id="vr">
-      <h2 data-i18n="sections.vr.title"></h2>
-      <p data-i18n="sections.vr.desc"></p>
+    <section id="blender">
+      <h2 data-i18n="sections.blender.title"></h2>
+      <p data-i18n="sections.blender.desc"></p>
     </section>
-    <section id="3d">
-      <h2 data-i18n="sections.d3.title"></h2>
-      <p data-i18n="sections.d3.desc"></p>
+    <section id="twinmotion">
+      <h2 data-i18n="sections.twinmotion.title"></h2>
+      <p data-i18n="sections.twinmotion.desc"></p>
     </section>
-    <section id="web">
-      <h2 data-i18n="sections.web.title"></h2>
-      <p data-i18n="sections.web.desc"></p>
+    <section id="website">
+      <h2 data-i18n="sections.website.title"></h2>
+      <p data-i18n="sections.website.desc"></p>
+    </section>
+    <section id="osint">
+      <h2 data-i18n="sections.osint.title"></h2>
+      <p data-i18n="sections.osint.desc"></p>
+    </section>
+    <section id="aboutme">
+      <h2 data-i18n="sections.aboutme.title"></h2>
+      <p data-i18n="sections.aboutme.desc"></p>
     </section>
   </main>
 
   <header>
-    <h1 data-i18n="title">Mon Portfolio</h1>
+    <h1 data-lang-key="title" data-i18n="title">Go see my projects !</h1>
     <nav>
-      <a href="#jeux" data-i18n="nav.games">Jeux</a>
-      <a href="#videos" data-i18n="nav.videos">Serious Games</a>
-      <a href="#vr" data-i18n="nav.vr">VR</a>
-      <a href="#3d" data-i18n="nav.3d">Modélisations</a>
-      <a href="#web" data-i18n="nav.web">Sites Web</a>
+      <a href="#unity" data-i18n="nav.unity">Unity</a>
+      <a href="#unreal" data-i18n="nav.unreal">Unreal</a>
+      <a href="#blender" data-i18n="nav.blender">Blender</a>
+      <a href="#twinmotion" data-i18n="nav.twinmotion">Twinmotion</a>
+      <a href="#website" data-lang-key="website" data-i18n="nav.website">Website</a>
+      <a href="#osint" data-i18n="nav.osint">Osint</a>
+      <a href="#aboutme" data-lang-key="aboutme" data-i18n="nav.aboutme">About me</a>
     </nav>
     <div id="controls">
-      <div id="lang-switch">
-        <img src="https://flagcdn.com/w40/fr.png" data-lang="fr" alt="FR">
+      <div class="language-selector" id="languageSelector">
         <img src="https://flagcdn.com/w40/gb.png" data-lang="en" alt="EN">
+        <img src="https://flagcdn.com/w40/fr.png" data-lang="fr" alt="FR">
       </div>
-      <button id="theme-toggle">Mode sombre</button>
+      <button data-lang-key="darkmode" id="theme-toggle">Dark mode</button>
     </div>
   </header>
 
