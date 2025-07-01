@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mon Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main>
+    <section id="jeux">
+      <h2 data-i18n="sections.games.title"></h2>
+      <p data-i18n="sections.games.desc"></p>
+    </section>
+    <section id="videos">
+      <h2 data-i18n="sections.videos.title"></h2>
+      <p data-i18n="sections.videos.desc"></p>
+    </section>
+    <section id="vr">
+      <h2 data-i18n="sections.vr.title"></h2>
+      <p data-i18n="sections.vr.desc"></p>
+    </section>
+    <section id="3d">
+      <h2 data-i18n="sections.d3.title"></h2>
+      <p data-i18n="sections.d3.desc"></p>
+    </section>
+    <section id="web">
+      <h2 data-i18n="sections.web.title"></h2>
+      <p data-i18n="sections.web.desc"></p>
+    </section>
+  </main>
+
   <header>
     <h1 data-i18n="title">Mon Portfolio</h1>
-
     <nav>
       <a href="#jeux" data-i18n="nav.games">Jeux</a>
       <a href="#videos" data-i18n="nav.videos">Serious Games</a>
@@ -17,46 +39,14 @@
       <a href="#3d" data-i18n="nav.3d">Modélisations</a>
       <a href="#web" data-i18n="nav.web">Sites Web</a>
     </nav>
-
     <div id="controls">
       <div id="lang-switch">
-        <button data-lang="fr" aria-label="Français">
-          <img src="https://flagcdn.com/w40/fr.png" alt="FR" />
-        </button>
-        <button data-lang="en" aria-label="English">
-          <img src="https://flagcdn.com/w40/gb.png" alt="EN" />
-        </button>
+        <img src="https://flagcdn.com/w40/fr.png" data-lang="fr" alt="FR">
+        <img src="https://flagcdn.com/w40/gb.png" data-lang="en" alt="EN">
       </div>
       <button id="theme-toggle">Mode sombre</button>
     </div>
   </header>
-
-  <main>
-    <section id="jeux">
-      <h2 data-i18n="sections.games.title"></h2>
-      <p data-i18n="sections.games.desc"></p>
-    </section>
-
-    <section id="videos">
-      <h2 data-i18n="sections.videos.title"></h2>
-      <p data-i18n="sections.videos.desc"></p>
-    </section>
-
-    <section id="vr">
-      <h2 data-i18n="sections.vr.title"></h2>
-      <p data-i18n="sections.vr.desc"></p>
-    </section>
-
-    <section id="3d">
-      <h2 data-i18n="sections.d3.title"></h2>
-      <p data-i18n="sections.d3.desc"></p>
-    </section>
-
-    <section id="web">
-      <h2 data-i18n="sections.web.title"></h2>
-      <p data-i18n="sections.web.desc"></p>
-    </section>
-  </main>
 
   <script src="translations.js"></script>
   <script src="script.js"></script>
