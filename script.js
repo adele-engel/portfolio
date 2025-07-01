@@ -1,81 +1,60 @@
-// DOM elements
-const languageSelector = document.getElementById('languageSelector');
+// Variables globales
 let currentLanguage = 'en';
 
-// Initialize the application
+// Initialisation
 function init() {
-  // Gestion du changement de langue par clic sur les drapeaux
-  document.querySelectorAll('#languageSelector img').forEach(button => {
-    flag.addEventListener('click', () => {
+  setupLanguageSwitcher();
+  updateLanguage();
+  setupThemeToggle();
+}
+
+// Gestion du changement de langue via boutons drapeaux
+function setupLanguageSwitcher() {
+  const buttons = document.querySelectorAll('#languageSelector button');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
       const selectedLang = button.getAttribute('data-lang');
-      currentLanguage = selectedLang;
-      updateLanguage();
+      if (selectedLang && selectedLang !== currentLanguage) {
+        currentLanguage = selectedLang;
+        updateLanguage();
+      }
     });
   });
-  updateLanguage(); // Appliquer la langue au démarrage
 }
 
-// Set up event listeners
-function setupEventListeners() {
-    // Home button
-    homeButton.addEventListener('click', function() {
-        showPage(videoInstructionsPage);
-        hideTopMenu();
-    });
-}
-
-// Update language
+// Mise à jour du contenu de la page selon la langue
 function updateLanguage() {
   document.querySelectorAll('[data-lang-key]').forEach(el => {
     const key = el.getAttribute('data-lang-key');
-    const keys = key.split('.');
-    let value = languageData[currentLanguage];
-    for (let k of keys) {
-      if (value[k]) value = value[k];
-      else return;
+    const value = languageData[currentLanguage][key];
+    if (value) {
+      el.textContent = value;
     }
-    el.textContent = value;
   });
-
   document.documentElement.lang = currentLanguage;
 }
 
-// Get text in current language
-function getLanguageText(key) {
-    return languageData[currentLanguage][key] || key;
-}
+// Gestion du thème clair/sombre
+function setupThemeToggle() {
+  const themeToggleBtn = document.getElementById("theme-toggle");
 
-
-
-
-
-const themeToggleBtn = document.getElementById("theme-toggle");
-
-function updateThemeButtonText(theme) {
-  if (theme === "dark") {
-    themeToggleBtn.textContent = "Mode sombre";
-  } else {
-    themeToggleBtn.textContent = "Mode clair";
+  function updateThemeButtonText(theme) {
+    if (currentLanguage === 'fr') {
+      themeToggleBtn.textContent = theme === "dark" ? "Mode sombre" : "Mode clair";
+    } else {
+      themeToggleBtn.textContent = theme === "dark" ? "Dark mode" : "Light mode";
+    }
   }
+
+  let currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+  updateThemeButtonText(currentTheme);
+
+  themeToggleBtn.addEventListener("click", () => {
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    updateThemeButtonText(currentTheme);
+  });
 }
 
-// Au chargement, on définit le texte selon le thème par défaut
-let currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
-updateThemeButtonText(currentTheme);
-
-themeToggleBtn.addEventListener("click", () => {
-  currentTheme = currentTheme === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", currentTheme);
-  updateThemeButtonText(currentTheme);
-});
-
-
-// Thème clair/sombre
-document.getElementById("theme-toggle").addEventListener("click", () => {
-  const html = document.documentElement;
-  const current = html.getAttribute("data-theme");
-  html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
-});
-
-// Initialize the app when document is loaded
-init();
+// Démarrer l'app une fois le DOM chargé
+document.addEventListener("DOMContentLoaded", init);
