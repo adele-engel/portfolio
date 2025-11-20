@@ -9,8 +9,8 @@
     --bg-color: #121212;
     --card-bg: #1e1e1e;
     --text-color: #e0e0e0;
-    --accent-color: #00d2ff; /* Bleu cyan style tech */
-    --secondary-accent: #8c52ff; /* Violet style Unity */
+    --accent-color: #00d2ff; /* Bleu cyan */
+    --secondary-accent: #8c52ff; /* Violet Unity */
 }
 
 body {
@@ -58,6 +58,25 @@ body {
 
 .nav-links a:hover {
     color: var(--accent-color);
+}
+
+/* Style du bouton de langue */
+.lang-switch button {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 20px;
+    transition: all 0.3s ease;
+}
+
+.lang-switch button:hover {
+    background: var(--accent-color);
+    color: #000;
 }
 
 /* Hero Section */
@@ -221,9 +240,14 @@ footer {
 /* Responsive Mobile */
 @media screen and (max-width: 768px) {
     .nav-links {
-        display: none; /* Pour simplifier le code ici, on cache le menu sur mobile */
+        display: none;
     }
     .hero h1 {
         font-size: 2rem;
+    }
+    .lang-switch {
+        position: absolute;
+        top: 18px;
+        right: 70px;
     }
 }
