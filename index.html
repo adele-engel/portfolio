@@ -1,61 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Développeuse Unity</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importation d'une police Google Fonts sympa -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icônes (pour GitHub, LinkedIn, etc.) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <main>
-    <section id="unity">
-      
-    </section>
-    <section id="unreal">
-      
-    </section>
-    <section id="blender">
-      
-    </section>
-    <section id="twinmotion">
-      
-    </section>
-    <section id="website">
-      
-    </section>
-    <section id="osint">
-      
-    </section>
-    <section id="aboutme">
-      
-    </section>
-  </main>
 
-  <header>
-    <h1 data-lang-key="title">Go see my projects !</h1>
-    <nav>
-      <a href="#unity">Unity</a>
-      <a href="#unreal">Unreal</a>
-      <a href="#blender">Blender</a>
-      <a href="#twinmotion">Twinmotion</a>
-      <a href="#website" data-lang-key="website">Website</a>
-      <a href="#osint">Osint</a>
-      <a href="#aboutme" data-lang-key="aboutme">About me</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">UnityDev.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
-    <div id="controls">
-      <div class="language-selector" id="languageSelector">
-        <button data-lang="en" aria-label="Switch to English">
-          <img src="img/english-flag.png" alt="English Flag">
-        </button>
-        <button data-lang="fr" aria-label="Passer en français">
-          <img src="img/french-flag.png" alt="Drapeau Français">
-        </button>
-      </div>
-      <button data-lang-key="darkmode" id="theme-toggle">Dark mode</button>
-    </div>
-  </header>
 
-  <script src="translations.js"></script>
-  <script src="script.js"></script>
+    <!-- Section Accueil (Hero) -->
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bonjour, je suis <span class="accent">Ton Prénom</span></h1>
+            <h2>Développeuse Unity & Game Designer</h2>
+            <p>Je crée des expériences immersives en C#.</p>
+            <a href="#projects" class="btn">Voir mes jeux</a>
+        </div>
+    </header>
+
+    <!-- Section À propos -->
+    <section id="about" class="container">
+        <h2 class="section-title">À propos</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Passionnée par le développement de jeux vidéo, je maîtrise le moteur <strong>Unity</strong> et le langage <strong>C#</strong>. J'aime transformer des concepts de gameplay en code propre et performant.</p>
+                <br>
+                <p><strong>Mes compétences :</strong></p>
+                <ul class="skills-list">
+                    <li>Unity 3D / 2D</li>
+                    <li>C# Scripting</li>
+                    <li>Systèmes de Gameplay</li>
+                    <li>Git / GitHub</li>
+                    <li>UI / UX Design</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Projets -->
+    <section id="projects" class="container">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="projects-grid">
+            
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <div class="card-image" style="background-color: #333;">
+                    <!-- Remplace src par une capture d'écran de ton jeu -->
+                    <img src="https://via.placeholder.com/400x250?text=Jeu+Platformer+2D" alt="Jeu 1">
+                </div>
+                <div class="card-info">
+                    <h3>Nom du Projet 1</h3>
+                    <p>Un platformer 2D codé en C#. Gestion de la physique et des ennemis.</p>
+                    <div class="tags">
+                        <span>Unity</span>
+                        <span>2D</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" target="_blank">Jouer (Itch.io)</a>
+                        <a href="#" target="_blank">Code (GitHub)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="project-card">
+                <div class="card-image" style="background-color: #333;">
+                    <img src="https://via.placeholder.com/400x250?text=Jeu+Shooter+3D" alt="Jeu 2">
+                </div>
+                <div class="card-info">
+                    <h3>Nom du Projet 2</h3>
+                    <p>Un FPS prototype. IA basique et gestion d'inventaire.</p>
+                    <div class="tags">
+                        <span>Unity</span>
+                        <span>3D</span>
+                        <span>AI</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" target="_blank">Jouer (Itch.io)</a>
+                        <a href="#" target="_blank">Code (GitHub)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ajoute d'autres projets ici -->
+
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="container contact-section">
+        <h2 class="section-title">Contact</h2>
+        <p>Tu cherches une développeuse pour ton prochain hit ? Discutons-en !</p>
+        <a href="mailto:tonemail@email.com" class="btn">M'envoyer un email</a>
+        
+        <div class="socials">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Itch.io</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Ton Prénom. Créé avec passion.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
