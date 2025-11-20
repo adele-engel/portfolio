@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Développeuse Unity</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Importation d'une police Google Fonts sympa -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Icônes (pour GitHub, LinkedIn, etc.) -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -16,11 +14,17 @@
     <nav class="navbar">
         <div class="logo">UnityDev.</div>
         <ul class="nav-links">
-            <li><a href="#home">Accueil</a></li>
-            <li><a href="#about">À propos</a></li>
-            <li><a href="#projects">Projets</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home" data-i18n="nav_home">Accueil</a></li>
+            <li><a href="#about" data-i18n="nav_about">À propos</a></li>
+            <li><a href="#projects" data-i18n="nav_projects">Projets</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
+        
+        <!-- Bouton de langue -->
+        <div class="lang-switch">
+            <button id="lang-toggle">EN</button>
+        </div>
+
         <div class="burger">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -31,21 +35,21 @@
     <!-- Section Accueil (Hero) -->
     <header id="home" class="hero">
         <div class="hero-content">
-            <h1>Bonjour, je suis <span class="accent">Ton Prénom</span></h1>
-            <h2>Développeuse Unity & Game Designer</h2>
-            <p>Je crée des expériences immersives en C#.</p>
-            <a href="#projects" class="btn">Voir mes jeux</a>
+            <h1><span data-i18n="hero_greeting">Bonjour, je suis</span> <span class="accent">Ton Prénom</span></h1>
+            <h2 data-i18n="hero_subtitle">Développeuse Unity & Game Designer</h2>
+            <p data-i18n="hero_desc">Je crée des expériences immersives en C#.</p>
+            <a href="#projects" class="btn" data-i18n="hero_btn">Voir mes jeux</a>
         </div>
     </header>
 
     <!-- Section À propos -->
     <section id="about" class="container">
-        <h2 class="section-title">À propos</h2>
+        <h2 class="section-title" data-i18n="about_title">À propos</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Passionnée par le développement de jeux vidéo, je maîtrise le moteur <strong>Unity</strong> et le langage <strong>C#</strong>. J'aime transformer des concepts de gameplay en code propre et performant.</p>
+                <p data-i18n="about_text">Passionnée par le développement de jeux vidéo, je maîtrise le moteur <strong>Unity</strong> et le langage <strong>C#</strong>. J'aime transformer des concepts de gameplay en code propre et performant.</p>
                 <br>
-                <p><strong>Mes compétences :</strong></p>
+                <p><strong data-i18n="about_skills">Mes compétences :</strong></p>
                 <ul class="skills-list">
                     <li>Unity 3D / 2D</li>
                     <li>C# Scripting</li>
@@ -59,25 +63,26 @@
 
     <!-- Section Projets -->
     <section id="projects" class="container">
-        <h2 class="section-title">Mes Projets</h2>
+        <h2 class="section-title" data-i18n="projects_title">Mes Projets</h2>
         <div class="projects-grid">
             
             <!-- Projet 1 -->
             <div class="project-card">
                 <div class="card-image" style="background-color: #333;">
-                    <!-- Remplace src par une capture d'écran de ton jeu -->
+                    <!-- Mets ton image ici -->
                     <img src="https://via.placeholder.com/400x250?text=Jeu+Platformer+2D" alt="Jeu 1">
                 </div>
                 <div class="card-info">
                     <h3>Nom du Projet 1</h3>
-                    <p>Un platformer 2D codé en C#. Gestion de la physique et des ennemis.</p>
+                    <!-- Note l'attribut data-i18n ici -->
+                    <p data-i18n="project1_desc">Un platformer 2D codé en C#. Gestion de la physique et des ennemis.</p>
                     <div class="tags">
                         <span>Unity</span>
                         <span>2D</span>
                     </div>
                     <div class="card-links">
-                        <a href="#" target="_blank">Jouer (Itch.io)</a>
-                        <a href="#" target="_blank">Code (GitHub)</a>
+                        <a href="#" target="_blank" data-i18n="play_btn">Jouer (Itch.io)</a>
+                        <a href="#" target="_blank" data-i18n="code_btn">Code (GitHub)</a>
                     </div>
                 </div>
             </div>
@@ -89,29 +94,27 @@
                 </div>
                 <div class="card-info">
                     <h3>Nom du Projet 2</h3>
-                    <p>Un FPS prototype. IA basique et gestion d'inventaire.</p>
+                    <p data-i18n="project2_desc">Un FPS prototype. IA basique et gestion d'inventaire.</p>
                     <div class="tags">
                         <span>Unity</span>
                         <span>3D</span>
                         <span>AI</span>
                     </div>
                     <div class="card-links">
-                        <a href="#" target="_blank">Jouer (Itch.io)</a>
-                        <a href="#" target="_blank">Code (GitHub)</a>
+                        <a href="#" target="_blank" data-i18n="play_btn">Jouer (Itch.io)</a>
+                        <a href="#" target="_blank" data-i18n="code_btn">Code (GitHub)</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Ajoute d'autres projets ici -->
 
         </div>
     </section>
 
     <!-- Section Contact -->
     <section id="contact" class="container contact-section">
-        <h2 class="section-title">Contact</h2>
-        <p>Tu cherches une développeuse pour ton prochain hit ? Discutons-en !</p>
-        <a href="mailto:tonemail@email.com" class="btn">M'envoyer un email</a>
+        <h2 class="section-title" data-i18n="contact_title">Contact</h2>
+        <p data-i18n="contact_desc">Tu cherches une développeuse pour ton prochain hit ? Discutons-en !</p>
+        <a href="mailto:tonemail@email.com" class="btn" data-i18n="contact_btn">M'envoyer un email</a>
         
         <div class="socials">
             <a href="#">LinkedIn</a>
@@ -121,7 +124,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2023 Ton Prénom. Créé avec passion.</p>
+        <p>&copy; 2023 Ton Prénom. Unity Developer Portfolio.</p>
     </footer>
 
     <script src="script.js"></script>
