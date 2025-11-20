@@ -1,60 +1,28 @@
-// Variables globales
-let currentLanguage = 'en';
+// Défilement doux pour les ancres
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-// Initialisation
-function init() {
-  setupLanguageSwitcher();
-  updateLanguage();
-  setupThemeToggle();
-}
-
-// Gestion du changement de langue via boutons drapeaux
-function setupLanguageSwitcher() {
-  const buttons = document.querySelectorAll('#languageSelector button');
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const selectedLang = button.getAttribute('data-lang');
-      if (selectedLang && selectedLang !== currentLanguage) {
-        currentLanguage = selectedLang;
-        updateLanguage();
-      }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-  });
-}
+});
 
-// Mise à jour du contenu de la page selon la langue
-function updateLanguage() {
-  document.querySelectorAll('[data-lang-key]').forEach(el => {
-    const key = el.getAttribute('data-lang-key');
-    const value = languageData[currentLanguage][key];
-    if (value) {
-      el.textContent = value;
-    }
-  });
-  document.documentElement.lang = currentLanguage;
-}
+// Animation simple à l'apparition des projets au scroll (facultatif mais joli)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+});
 
-// Gestion du thème clair/sombre
-function setupThemeToggle() {
-  const themeToggleBtn = document.getElementById("theme-toggle");
-
-  function updateThemeButtonText(theme) {
-    if (currentLanguage === 'fr') {
-      themeToggleBtn.textContent = theme === "dark" ? "Mode sombre" : "Mode clair";
-    } else {
-      themeToggleBtn.textContent = theme === "dark" ? "Dark mode" : "Light mode";
-    }
-  }
-
-  let currentTheme = document.documentElement.getAttribute("data-theme") || "light";
-  updateThemeButtonText(currentTheme);
-
-  themeToggleBtn.addEventListener("click", () => {
-    currentTheme = currentTheme === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", currentTheme);
-    updateThemeButtonText(currentTheme);
-  });
-}
-
-// Démarrer l'app une fois le DOM chargé
-document.addEventListener("DOMContentLoaded", init);
+// On applique l'animation aux cartes
+document.querySelectorAll('.project-card').forEach((el) => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+});
