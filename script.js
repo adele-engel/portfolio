@@ -7,7 +7,7 @@ const translations = {
         nav_about: "À propos",
         nav_projects: "Projets",
         nav_contact: "Contact",
-        hero_greeting: "Bonjour, je suis",
+        hero_greeting: "Bonjour, je m'appelle",
         hero_subtitle: "Développeuse Unity & Game Designer",
         hero_desc: "Je crée des expériences immersives en C#.",
         hero_btn: "Voir mes jeux",
