@@ -1,6 +1,5 @@
 // --- SYSTÈME DE TRADUCTION ---
 
-// Dictionnaire de toutes les phrases du site
 const translations = {
     fr: {
         nav_home: "Accueil",
@@ -28,7 +27,7 @@ const translations = {
         download_btn: "Télécharger",
         code_btn: "Code (GitHub)",
         contact_title: "Contact",
-        contact_desc: "Vous rechercher une <strong>développeuse Unity/Unreal</strong> pour vos prochains projets ? N'hésitez pas à me contacter !",
+        contact_desc: "Vous rechercher une développeuse <strong>Unity/Unreal</strong> pour vos prochains projets ? N'hésitez pas à me contacter !",
         contact_btn: "M'envoyer un email"
     },
     en: {
@@ -57,45 +56,82 @@ const translations = {
         download_btn: "Download",
         code_btn: "Code (GitHub)",
         contact_title: "Contact",
-        contact_desc: "Are you looking for a <strong>Unity/Unreal developer</strong> for your upcoming projects? Please do not hesitate to contact me !",
+        contact_desc: "Are you looking for a <strong>Unity/Unreal</strong> developer for your upcoming projects? Please do not hesitate to contact me !",
         contact_btn: "Send me an email"
     }
 };
 
-// Variable pour savoir quelle langue est active (français par défaut)
 let currentLang = 'fr';
 const langToggleBtn = document.getElementById('lang-toggle');
 
-// Fonction qui applique les traductions
 function updateContent() {
-    // On cherche tous les éléments qui ont l'attribut data-i18n
     const elements = document.querySelectorAll('[data-i18n]');
-    
     elements.forEach(element => {
         const key = element.getAttribute('data-i18n');
-        // Si on trouve la traduction dans le dictionnaire, on remplace le texte
         if (translations[currentLang][key]) {
             element.innerHTML = translations[currentLang][key];
         }
     });
-
-    // On change le texte du bouton (si on est en FR, on propose EN, et inversement)
     langToggleBtn.innerText = currentLang === 'fr' ? 'EN' : 'FR';
 }
 
-// Quand on clique sur le bouton
 if(langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
-        // Si c'est français, ça devient anglais, sinon ça devient français
         currentLang = currentLang === 'fr' ? 'en' : 'fr';
-        updateContent(); // On lance la mise à jour
+        updateContent();
     });
 }
 
 
-// --- ANIMATIONS & SCROLL ---
+// --- GESTION DU MENU MOBILE (BURGER) ---
+const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
 
-// Défilement fluide quand on clique sur le menu
+    if(burger) {
+        burger.addEventListener('click', () => {
+            // Ouvrir / Fermer le menu
+            nav.classList.toggle('nav-active');
+
+            // Animer les liens (apparition progressive)
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            // Transformer le burger en croix
+            burger.classList.toggle('toggle');
+        });
+    }
+}
+
+// Lancer la fonction du menu
+navSlide();
+
+
+// --- SCROLL & ANIMATIONS ---
+
+// Fermer le menu quand on clique sur un lien (Spécifique mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        const nav = document.querySelector('.nav-links');
+        const burger = document.querySelector('.burger');
+        // Si le menu est ouvert, on le ferme
+        if(nav.classList.contains('nav-active')){
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            document.querySelectorAll('.nav-links li').forEach((li) => {
+                li.style.animation = '';
+            });
+        }
+    });
+});
+
+// Défilement fluide vers les ancres
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -104,24 +140,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             target.scrollIntoView({
                 behavior: 'smooth'
             });
-            
-            // Ferme le menu burger sur mobile après un clic
-            const nav = document.querySelector('.nav-links');
-            const burger = document.querySelector('.burger');
-            if(nav.classList.contains('nav-active')){
-                nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-                
-                // Reset animations
-                document.querySelectorAll('.nav-links li').forEach((link) => {
-                    link.style.animation = '';
-                });
-            }
         }
     });
 });
 
-// Animation d'apparition des projets
+// Animation d'apparition des projets au scroll
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -137,31 +160,3 @@ document.querySelectorAll('.project-card').forEach((el) => {
     el.style.transition = 'all 0.6s ease-out';
     observer.observe(el);
 });
-
-// --- MENU BURGER MOBILE (Ajouté) ---
-const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
-
-    if(burger) {
-        burger.addEventListener('click', () => {
-            // Toggle Nav
-            nav.classList.toggle('nav-active');
-
-            // Animation des liens
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-
-            // Animation Burger (Croix)
-            burger.classList.toggle('toggle');
-        });
-    }
-}
-
-navSlide();
