@@ -24,16 +24,16 @@ body {
 /* Navigation */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Pousse le logo à gauche et le burger à droite */
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
     background-color: rgba(18, 18, 18, 0.95);
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 2000; /* Très haut pour rester au-dessus de tout */
+    z-index: 2000;
     border-bottom: 1px solid #333;
-    height: 80px; /* Hauteur fixe pour éviter les décalages */
+    height: 80px;
 }
 
 .logo {
@@ -64,34 +64,26 @@ body {
     color: var(--accent-color);
 }
 
-/* --- Menu Burger (Les 3 traits) --- */
+/* --- Menu Burger (Caché sur PC par défaut) --- */
 .burger {
-    display: none; /* Caché sur PC */
+    display: none;
     cursor: pointer;
-    z-index: 2001; /* Doit être au-dessus du menu déroulant pour pouvoir fermer */
+    z-index: 2001;
 }
 
 .burger div {
     width: 25px;
     height: 3px;
-    background-color: var(--text-color); /* Couleur des traits (blanc/gris) */
+    background-color: var(--text-color);
     margin: 5px;
     transition: all 0.3s ease;
     border-radius: 2px;
 }
 
-/* Animation en croix quand le menu est ouvert */
-.toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-    background-color: var(--accent-color); /* Change de couleur au clic */
-}
-.toggle .line2 {
-    opacity: 0;
-}
-.toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
-    background-color: var(--accent-color);
-}
+/* Animation Burger */
+.toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); background-color: var(--accent-color); }
+.toggle .line2 { opacity: 0; }
+.toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); background-color: var(--accent-color); }
 
 /* Bouton de langue */
 .lang-switch button {
@@ -187,8 +179,7 @@ body {
     border: 1px solid #333;
     display: flex;
     flex-direction: column;
-    /* On ajoute un peu de padding en bas de la carte pour l'esthétique */
-    padding-bottom: 1rem; 
+    padding-bottom: 1rem;
 }
 
 .project-card:hover {
@@ -213,18 +204,16 @@ body {
     color: var(--accent-color);
 }
 
-/* --- NOUVEAU STYLE VIDÉO (Espace autour) --- */
+/* --- STYLE VIDÉO CORRIGÉ (S'applique partout : PC et Mobile) --- */
 .project-video {
-    width: 90%; /* La vidéo prend 90% de la largeur de la carte */
-    height: auto;
+    width: 92%; /* On laisse 4% de chaque côté */
+    margin: 10px auto 15px auto; /* Centre la vidéo + marges haut/bas */
     display: block;
-    margin: 0 auto; /* Centre la vidéo horizontalement */
-    margin-top: 10px; /* Un peu d'espace au-dessus */
-    margin-bottom: 10px; /* Un peu d'espace en dessous */
-    border-radius: 8px; /* Arrondit les coins de la vidéo */
-    border: 1px solid #444; /* Bordure discrète autour de la vidéo */
+    border-radius: 10px; /* Coins arrondis bien visibles */
+    border: 1px solid #444;
     background-color: #000;
-    max-height: 250px;
+    max-height: 300px; /* Limite la hauteur sur grand écran */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Petite ombre pour le style */
 }
 
 .tags {
@@ -297,72 +286,65 @@ footer {
     color: #777;
 }
 
-/* --- VERSION MOBILE --- */
+/* --- VERSION MOBILE (< 768px) --- */
 @media screen and (max-width: 768px) {
-    /* Menu caché par défaut, prêt à glisser */
+    /* Menu mobile */
     .nav-links {
         position: fixed;
         right: 0px;
         height: 100vh;
         top: 0;
-        background-color: var(--card-bg); /* Fond du menu */
+        background-color: var(--card-bg);
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Centre les liens verticalement */
-        width: 100%; /* Prend tout l'écran sur mobile pour un effet propre */
-        transform: translateX(100%); /* Poussé hors de l'écran à droite */
+        justify-content: center;
+        width: 100%;
+        transform: translateX(100%);
         transition: transform 0.4s ease-in-out;
-        z-index: 2000; /* Juste en dessous du burger */
+        z-index: 2000;
+        border-left: 1px solid #333;
     }
 
-    /* Style des liens dans le menu mobile */
     .nav-links li {
         margin: 2rem 0;
-        opacity: 0; /* Caché pour l'animation */
+        opacity: 0;
     }
 
     .nav-links a {
-        font-size: 1.5rem; /* Plus gros sur mobile */
+        font-size: 1.5rem;
     }
 
-    /* Afficher le Burger */
+    /* Affichage du Burger */
     .burger {
         display: block;
     }
 
-    /* Classe ajoutée par JS pour faire apparaître le menu */
     .nav-active {
         transform: translateX(0%);
     }
 
-    /* Ajustements mobile généraux */
+    /* Ajustements typo */
     .hero h1 {
         font-size: 2rem;
         padding: 0 10px;
     }
-    
+
     .container {
         padding: 5rem 5%;
     }
 
-    /* Position du bouton de langue sur mobile */
+    /* Position bouton langue */
     .lang-switch {
         position: absolute;
         top: 25px;
-        right: 70px; /* Juste à gauche du burger */
+        right: 70px; /* À gauche du burger */
         z-index: 2001;
     }
 }
 
-/* Animation d'apparition des liens */
+/* Animation des liens du menu */
 @keyframes navLinkFade {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0px); }
 }
