@@ -28,7 +28,7 @@ const translations = {
         download_btn: "Télécharger",
         code_btn: "Code (GitHub)",
         contact_title: "Contact",
-        contact_desc: "Vous rechercher une développeuse <strong>Unity/Unreal</strong> pour vos prochains projets ? N'hésitez pas à me contacter !",
+        contact_desc: "Vous rechercher une <strong>développeuse Unity/Unreal</strong> pour vos prochains projets ? N'hésitez pas à me contacter !",
         contact_btn: "M'envoyer un email"
     },
     en: {
@@ -57,7 +57,7 @@ const translations = {
         download_btn: "Download",
         code_btn: "Code (GitHub)",
         contact_title: "Contact",
-        contact_desc: "Are you looking for a <strong>Unity/Unreal</strong> developer for your upcoming projects? Please do not hesitate to contact me !",
+        contact_desc: "Are you looking for a <strong>Unity/Unreal developer</strong> for your upcoming projects? Please do not hesitate to contact me !",
         contact_btn: "Send me an email"
     }
 };
@@ -84,22 +84,40 @@ function updateContent() {
 }
 
 // Quand on clique sur le bouton
-langToggleBtn.addEventListener('click', () => {
-    // Si c'est français, ça devient anglais, sinon ça devient français
-    currentLang = currentLang === 'fr' ? 'en' : 'fr';
-    updateContent(); // On lance la mise à jour
-});
+if(langToggleBtn) {
+    langToggleBtn.addEventListener('click', () => {
+        // Si c'est français, ça devient anglais, sinon ça devient français
+        currentLang = currentLang === 'fr' ? 'en' : 'fr';
+        updateContent(); // On lance la mise à jour
+    });
+}
 
 
-// --- ANIMATIONS & SCROLL (Déjà présent avant) ---
+// --- ANIMATIONS & SCROLL ---
 
 // Défilement fluide quand on clique sur le menu
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+            
+            // Ferme le menu burger sur mobile après un clic
+            const nav = document.querySelector('.nav-links');
+            const burger = document.querySelector('.burger');
+            if(nav.classList.contains('nav-active')){
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
+                
+                // Reset animations
+                document.querySelectorAll('.nav-links li').forEach((link) => {
+                    link.style.animation = '';
+                });
+            }
+        }
     });
 });
 
@@ -119,3 +137,31 @@ document.querySelectorAll('.project-card').forEach((el) => {
     el.style.transition = 'all 0.6s ease-out';
     observer.observe(el);
 });
+
+// --- MENU BURGER MOBILE (Ajouté) ---
+const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+
+    if(burger) {
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+
+            // Animation des liens
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            // Animation Burger (Croix)
+            burger.classList.toggle('toggle');
+        });
+    }
+}
+
+navSlide();
