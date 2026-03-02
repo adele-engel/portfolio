@@ -160,3 +160,42 @@ document.querySelectorAll('.project-card').forEach((el) => {
     el.style.transition = 'all 0.6s ease-out';
     observer.observe(el);
 });
+
+// --- GESTION DES CAROUSELS VIDÉO ---
+const carousels = document.querySelectorAll('.carousel-container');
+
+carousels.forEach(carousel => {
+    const slide = carousel.querySelector('.carousel-slide');
+    const videos = carousel.querySelectorAll('.project-video');
+    const prevBtn = carousel.querySelector('.prev-btn');
+    const nextBtn = carousel.querySelector('.next-btn');
+    
+    let counter = 0;
+    const size = 100; // Car on déplace de 100% à chaque fois
+
+    // Fonction pour mettre à jour la position
+    function updateCarousel() {
+        slide.style.transform = 'translateX(' + (-size * counter) + '%)';
+        
+        // Mettre en pause les vidéos qu'on ne regarde plus
+        videos.forEach(vid => vid.pause());
+    }
+
+    nextBtn.addEventListener('click', () => {
+        if (counter >= videos.length - 1) {
+            counter = 0; // Retour au début si on est à la fin
+        } else {
+            counter++;
+        }
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (counter <= 0) {
+            counter = videos.length - 1; // Aller à la fin si on est au début
+        } else {
+            counter--;
+        }
+        updateCarousel();
+    });
+});
