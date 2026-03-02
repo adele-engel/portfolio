@@ -162,40 +162,51 @@ document.querySelectorAll('.project-card').forEach((el) => {
 });
 
 // --- GESTION DES CAROUSELS VIDÉO ---
-const carousels = document.querySelectorAll('.carousel-container');
 
-carousels.forEach(carousel => {
-    const slide = carousel.querySelector('.carousel-slide');
-    const videos = carousel.querySelectorAll('.project-video');
-    const prevBtn = carousel.querySelector('.prev-btn');
-    const nextBtn = carousel.querySelector('.next-btn');
-    
-    let counter = 0;
-    const size = 100; // Car on déplace de 100% à chaque fois
+document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.carousel-container');
 
-    // Fonction pour mettre à jour la position
-    function updateCarousel() {
-        slide.style.transform = 'translateX(' + (-size * counter) + '%)';
+    carousels.forEach((carousel, index) => {
+        // Sélection des éléments internes
+        const slide = carousel.querySelector('.carousel-slide');
+        const wrappers = carousel.querySelectorAll('.video-wrapper');
+        const videos = carousel.querySelectorAll('video'); // Pour mettre en pause
+        const prevBtn = carousel.querySelector('.prev-btn');
+        const nextBtn = carousel.querySelector('.next-btn');
         
-        // Mettre en pause les vidéos qu'on ne regarde plus
-        videos.forEach(vid => vid.pause());
-    }
+        // Si un élément manque, on arrête pour éviter les erreurs
+        if (!slide || wrappers.length === 0 || !prevBtn || !nextBtn) return;
 
-    nextBtn.addEventListener('click', () => {
-        if (counter >= videos.length - 1) {
-            counter = 0; // Retour au début si on est à la fin
-        } else {
-            counter++;
-        }
-        updateCarousel();
-    });
+        let counter = 0;
+        const totalSlides = wrappers.length;
 
-    prevBtn.addEventListener('click', () => {
-        if (counter <= 0) {
-            counter = videos.length - 1; // Aller à la fin si on est au début
-        } else {
-            counter--;
+        // Fonction de mise à jour
+        function updateCarousel() {
+            // Décalage en pourcentage (ex: -100%, -200%)
+            slide.style.transform = `translateX(-${counter * 100}%)`;
+            
+            // Pause toutes les vidéos pour éviter la cacophonie
+            videos.forEach(vid => vid.pause());
         }
-        updateCarousel();
+
+        // Clic bouton Suivant
+        nextBtn.addEventListener('click', () => {
+            if (counter >= totalSlides - 1) {
+                counter = 0; // Retour au début
+            } else {
+                counter++;
+            }
+            updateCarousel();
+        });
+
+        // Clic bouton Précédent
+        prevBtn.addEventListener('click', () => {
+            if (counter <= 0) {
+                counter = totalSlides - 1; // Aller à la fin
+            } else {
+                counter--;
+            }
+            updateCarousel();
+        });
     });
 });
