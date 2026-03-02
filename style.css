@@ -344,61 +344,74 @@ footer {
 }
 
 /* --- CAROUSEL VIDÉO --- */
+
+/* Le cadre principal qui cache ce qui dépasse */
 .carousel-container {
     position: relative;
     width: 100%;
-    overflow: hidden; /* Cache ce qui dépasse sur les côtés */
-    margin-top: 10px;
+    overflow: hidden; /* INDISPENSABLE : Cache les autres vidéos */
+    margin-bottom: 10px;
 }
 
+/* La bande qui contient toutes les vidéos alignées */
 .carousel-slide {
-    display: flex; /* Met les éléments côte à côte */
+    display: flex; /* Aligne horizontalement */
     width: 100%;
-    transition: transform 0.4s ease-in-out; /* Animation de glissement */
+    transition: transform 0.4s ease-in-out; /* Animation fluide */
 }
 
-/* Le wrapper fait 100% de la largeur du container parent */
+/* Chaque bloc contenant une vidéo */
 .video-wrapper {
-    min-width: 100%;
+    /* C'est la ligne MAGIQUE qui empêche le rétrécissement : */
+    min-width: 100%; 
+    flex: 0 0 100%; 
+    
+    /* Centre la vidéo à l'intérieur */
     display: flex;
-    justify-content: center; /* Centre la vidéo dans le slide */
+    justify-content: center;
     align-items: center;
 }
 
-/* On s'assure que la vidéo garde ton style original */
+/* La vidéo elle-même (garde ton style arrondi/marges) */
 .video-wrapper .project-video {
-    /* Tes styles originaux (width: 92%, border-radius, etc) s'appliqueront ici */
+    /* Tes styles originaux s'appliquent ici (92% width, margin, radius) */
     display: block;
+    /* On force la largeur à 92% comme tes autres vidéos */
+    width: 92%; 
+    margin: 10px auto; 
 }
 
-/* Style des boutons Flèches */
+/* Style des flèches */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5); /* Noir semi-transparent */
+    color: white;
     border: none;
-    font-size: 1.5rem; /* Taille de la flèche */
-    padding: 10px 15px;
+    font-size: 2rem; /* Flèche plus grosse */
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    z-index: 10;
-    border-radius: 5px;
-    user-select: none;
+    z-index: 100;
+    border-radius: 50%; /* Bouton rond */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: background 0.3s;
 }
 
 .carousel-btn:hover {
     background-color: var(--accent-color);
-    color: #000;
+    color: black;
 }
 
 .prev-btn {
-    left: 5px;
+    left: 10px;
 }
 
 .next-btn {
-    right: 5px;
+    right: 10px;
 }
 
 /* Animation des liens du menu */
