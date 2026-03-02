@@ -72,12 +72,10 @@
             <!-- Projet 1 (Virtual Polytech) -->
             <div class="project-card">
                 <div class="card-image" style="background-color: #333;">
-                    <!-- Mets ton image ici -->
                     <img src="img/VirtualPolytech.png" alt="Projet 1">
                 </div>
                 <div class="card-info">
                     <h3>Virtual Polytech</h3>
-                    <!-- Note l'attribut data-i18n ici -->
                     <p data-i18n="project1_desc">Platforme permettant de découvrir de façon immersive l'école d'ingénieurs de Polytech Angers.</p>
                     <div class="tags">
                         <span>Unity</span>
@@ -87,27 +85,31 @@
                         <a href="#" target="_blank" data-i18n="download_btn">Télécharger</a>
                     </div>
                 </div>
-
-                <!-- Vidéo 1 du projet (vpp3) -->
-                <video class="project-video" controls>
-                    <source src="https://files.u-angers.fr/data/f-535ff875292edb2a5728edd8.mkv" type="video/mp4">
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
-                <!-- Vidéo 2 du projet (sagi) -->
-                <video class="project-video" controls>
-                    <source src="https://files.u-angers.fr/data/f-432d5d85d5327ab66f750a28.mkv" type="video/mp4">
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
-                <!-- Vidéo 3 du projet (bems) -->
-                <video class="project-video" controls>
-                    <source src="https://files.u-angers.fr/data/f-7c7c1604b6d62aece6569b61.mkv" type="video/mp4">
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
-                <!-- Vidéo 4 du projet (gbs) -->
-                <video class="project-video" controls>
-                    <source src="https://files.u-angers.fr/data/f-1735e6eb5b998db118d4cac4.mkv" type="video/mp4">
-                    Votre navigateur ne supporte pas la vidéo.
-                </video>
+            
+                <!-- CAROUSEL VIDÉO -->
+                <div class="carousel-container">
+                    <!-- Bouton Gauche -->
+                    <button class="carousel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    
+                    <!-- Conteneur des vidéos (Slide) -->
+                    <div class="carousel-slide">
+                        <video class="project-video" controls>
+                            <source src="https://files.u-angers.fr/data/f-535ff875292edb2a5728edd8.mkv" type="video/mp4">
+                        </video>
+                        <video class="project-video" controls>
+                            <source src="https://files.u-angers.fr/data/f-432d5d85d5327ab66f750a28.mkv" type="video/mp4">
+                        </video>
+                        <video class="project-video" controls>
+                            <source src="https://files.u-angers.fr/data/f-7c7c1604b6d62aece6569b61.mkv" type="video/mp4">
+                        </video>
+                        <video class="project-video" controls>
+                            <source src="https://files.u-angers.fr/data/f-1735e6eb5b998db118d4cac4.mkv" type="video/mp4">
+                        </video>
+                    </div>
+            
+                    <!-- Bouton Droite -->
+                    <button class="carousel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
             </div>
 
             <!-- Projet 2 (Neon Blade) -->
