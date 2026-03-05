@@ -186,16 +186,14 @@ body {
     padding: 5rem 10%;
 }
 
+/* Titres des sections (A propos, Projets, Contact) */
 .section-title {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 3rem;
     border-bottom: 2px solid var(--secondary-accent);
-    display: inline-block;
-    padding-bottom: 0.5rem;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    padding-bottom: 0.5rem;    
+    display: table;           /* L'élément s'adapte à la largeur du texte */
+    margin: 0 auto 3rem auto; /* "0" en haut, "auto" (centre) sur les côtés, "3rem" en bas */
 }
 
 /* Grid Projets */
