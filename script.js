@@ -7,7 +7,7 @@ const translations = {
         nav_projects: "Projets",
         nav_contact: "Contact",
         hero_greeting: "Bonjour, je m'appelle",
-        hero_subtitle: "Développeuse de jeux vidéo",
+        hero_subtitle: "Développeuse d'expériences en réalité virtuelle et de jeux vidéo",
         hero_desc: "Je crée des expériences immersives sur Unity et Unreal Engine.",
         hero_btn: "Voir mes projets",
         about_title: "À propos",
@@ -27,7 +27,7 @@ const translations = {
         download_btn: "Télécharger",
         code_btn: "Code (GitHub)",
         contact_title: "Contact",
-        contact_desc: "Vous rechercher une développeuse <strong>Unity/Unreal</strong> pour vos prochains projets ? N'hésitez pas à me contacter !",
+        contact_desc: "Vous recherchez une développeuse <strong>Unity/VR</strong> pour vos prochains projets ? N'hésitez pas à me contacter !",
         contact_btn: "M'envoyer un email"
     },
     en: {
@@ -36,7 +36,7 @@ const translations = {
         nav_projects: "Projects",
         nav_contact: "Contact",
         hero_greeting: "Hi, I am",
-        hero_subtitle: "Video game developer",
+        hero_subtitle: "VR and video game developer",
         hero_desc: "I create immersive experiences on Unity and Unreal Engine.",
         hero_btn: "See my projects",
         about_title: "About Me",
@@ -56,7 +56,7 @@ const translations = {
         download_btn: "Download",
         code_btn: "Code (GitHub)",
         contact_title: "Contact",
-        contact_desc: "Are you looking for a <strong>Unity/Unreal</strong> developer for your upcoming projects? Please do not hesitate to contact me !",
+        contact_desc: "Are you looking for a <strong>Unity/VR</strong> developer for your upcoming projects? Please do not hesitate to contact me !",
         contact_btn: "Send me an email"
     }
 };
